@@ -40,52 +40,46 @@ if(difference < 0) {
 }, 1000);
 
 // RSVP FORM LOGIC
-const attendanceOptions = 
-document.querySelectorAll('input[name="attendance"]');
+const attendanceOptions = document.querySelectorAll('input[name="attendance"]');
+const dietaryField = document.getElementById("dietaryField");
 
-const dietaryField = 
-document.getElementById("dietaryField"); 
+if (attendanceOptions.length && dietaryField) {
+    attendanceOptions.forEach(option => {
+        option.addEventListener("change", () => {
+            if(option.value === "accept" && option.checked) {
+                dietaryField.classList.remove("hidden");
+            } else if(option.value === "decline" && option.checked) {
+                dietaryField.classList.add("hidden");
+            }
+        });
+    });
+}
 
-attendanceOptions.forEach(option => {
+// FORM SUBMISSION
+const form = document.getElementById("rsvpForm");
+if (form) {
+    form.addEventListener("submit", (e) => {
+        e.preventDefault();
 
-    option.addEventListener("change", () => {
+        const name = document.getElementById("name").value;
+        const email = document.getElementById("email").value;
 
-        if(option.value === "accept" && option.checked) {
+        const confirmation = document.getElementById("confirmationMessage");
 
-            dietaryField.classList.remove("hidden");
+        if (confirmation) {
+            confirmation.innerHTML = `✓ Thank you, ${name}! Your RSVP has been received and a confirmation email will be sent to ${email}.`;
+        }
 
-        } else if(option.value === "decline" && option.checked) {
-            
+        form.reset();
+        if (dietaryField) {
             dietaryField.classList.add("hidden");
         }
 
+        if (confirmation) {
+            confirmation.scrollIntoView({ behavior: 'smooth' });
+        }
     });
-
-});
-
-// FORM SUBMISSION
-
-const form = document.getElementById("rsvpForm");
-
-form.addEventListener("submit", (e) => {
-
-    e.preventDefault();
-
-    const name = document.getElementById("name").value;
-    const email = document.getElementById("email").value;
-
-    const confirmation = document.getElementById("confirmationMessage");
-
-    confirmation.innerHTML = `✓ Thank you, ${name}! Your RSVP has been received and a confirmation email will be sent to ${email}.`;
-
-    form.reset();
-
-    dietaryField.classList.add("hidden");
-
-    // Scroll to confirmation message
-    confirmation.scrollIntoView({ behavior: 'smooth' });
-
-});
+}
 
 
     // SCROLL REVEAL ANIMATIONS

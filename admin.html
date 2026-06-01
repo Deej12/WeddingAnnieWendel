@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Annie & Wendel — Admin Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="admin.js" defer></script>
+</head>
+<body>
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo">Annie & Wendel</a>
+      <nav class="nav-menu">
+        <a href="index.html#home" class="nav-link">Home</a>
+        <a href="index.html#event-info" class="nav-link">Event Info</a>
+        <a href="index.html#story" class="nav-link">Our Story</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="admin-page">
+    <div class="container">
+      <div class="admin-login-card reveal" id="adminLoginCard">
+        <h2>Admin access</h2>
+        <p class="section-subtitle">Enter the admin key to view RSVP responses.</p>
+        <div class="form-group">
+          <label for="adminKeyInput">Admin Key</label>
+          <input type="password" id="adminKeyInput" placeholder="Enter admin key">
+        </div>
+        <div class="form-group submit-group">
+          <button class="btn btn-primary" id="loginButton">Unlock Dashboard</button>
+        </div>
+        <div id="adminMessage" class="admin-message"></div>
+      </div>
+
+      <section id="dashboardContent" class="admin-dashboard hidden">
+        <div class="admin-header">
+          <div>
+            <h2>RSVP Dashboard</h2>
+            <p class="section-subtitle">View, search, filter, export, and manage responses.</p>
+          </div>
+          <div class="admin-actions">
+            <button class="btn" id="refreshButton">Refresh</button>
+            <button class="btn btn-primary" id="exportButton">Export CSV</button>
+          </div>
+        </div>
+
+        <div class="admin-cards">
+          <div class="admin-card">
+            <h3>Total Invited</h3>
+            <p id="metricInvited">—</p>
+          </div>
+          <div class="admin-card">
+            <h3>Confirmed Attendees</h3>
+            <p id="metricAttending">—</p>
+          </div>
+          <div class="admin-card">
+            <h3>Declined Invitations</h3>
+            <p id="metricDeclined">—</p>
+          </div>
+          <div class="admin-card">
+            <h3>Pending Responses</h3>
+            <p id="metricPending">—</p>
+          </div>
+        </div>
+
+        <div class="admin-filters">
+          <div class="form-group">
+            <label for="searchInput">Search</label>
+            <input id="searchInput" placeholder="Search by name, email, or mobile">
+          </div>
+          <div class="form-group">
+            <label for="statusFilter">Filter by status</label>
+            <select id="statusFilter">
+              <option value="all">All responses</option>
+              <option value="attending">Attending</option>
+              <option value="not attending">Not Attending</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="admin-table-wrapper">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Mobile</th>
+                <th>Guests</th>
+                <th>Status</th>
+                <th>Last Updated</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="rsvpTableBody"></tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h4>Annie & Wendel</h4>
+          <p>Forever Begins Here</p>
+        </div>
+        <div class="footer-section">
+          <h4>Contact</h4>
+          <p>Email: annieandwendel@gmail.com</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Annie & Wendel. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

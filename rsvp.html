@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Annie & Wendel — RSVP</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet"> 
+  <link rel="stylesheet" href="style.css">
+  <script src="rsvp.js" defer></script>
+</head>
+<body>
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo">Annie & Wendel</a>
+      <nav class="nav-menu">
+        <a href="index.html#home" class="nav-link">Home</a>
+        <a href="index.html#event-info" class="nav-link">Event Info</a>
+        <a href="index.html#story" class="nav-link">Our Story</a>
+        <a href="rsvp.html" class="nav-link">RSVP</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="form-page">
+    <div class="container">
+      <div class="form-card reveal">
+        <h2>Wedding RSVP</h2>
+        <p class="section-subtitle">Confirm your attendance and help us plan a beautiful celebration.</p>
+
+        <form id="rsvpForm" class="rsvp-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="fullName">Full Name</label>
+              <input type="text" id="fullName" name="fullName" required placeholder="Your full name">
+            </div>
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" name="email" required placeholder="you@example.com">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="mobile">Mobile Number</label>
+              <input type="tel" id="mobile" name="mobile" required placeholder="+63 912 345 6789" pattern="[0-9+()\s-]{7,20}">
+            </div>
+            <div class="form-group">
+              <label for="guests">Number of Attendees</label>
+              <input type="number" id="guests" name="guests" min="0" max="10" value="1" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="status">RSVP Status</label>
+            <select id="status" name="status" required>
+              <option value="attending">Attending</option>
+              <option value="not attending">Not Attending</option>
+            </select>
+          </div>
+
+          <div class="form-group submit-group">
+            <button class="btn btn-primary" type="submit">Submit RSVP</button>
+          </div>
+
+          <div id="rsvpResponse" class="rsvp-response" aria-live="polite"></div>
+        </form>
+
+        <div class="rsvp-note">
+          <p>We validate responses against the confirmed guest list. If your name is not found, you will be guided to contact the couple directly.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h4>Annie & Wendel</h4>
+          <p>Forever Begins Here</p>
+        </div>
+        <div class="footer-section">
+          <h4>Contact</h4>
+          <p>Email: annieandwendel@gmail.com</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Annie & Wendel. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
