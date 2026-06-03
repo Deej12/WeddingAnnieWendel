@@ -147,10 +147,53 @@ form.addEventListener("submit", (e) => {
         }, 4500);
     }
 
+    function tryPlayBackgroundAudio(){
+        const audio = document.getElementById('bg-audio');
+        if(!audio) {
+            console.warn('Audio element not found');
+            return;
+        }
+
+        // Ensure audio is set to loop
+        audio.loop = true;
+        audio.volume = 0.5; // Set volume to 50% to be considerate
+
+        const attemptPlay = () => {
+            const playPromise = audio.play();
+            if(playPromise !== undefined) {
+                playPromise
+                    .then(() => {
+                        console.log('Background music is now playing!');
+                    })
+                    .catch(error => {
+                        console.log('Autoplay blocked by browser policy. Music will start on user interaction.', error);
+                    });
+            }
+        };
+
+        // Try to play immediately
+        attemptPlay();
+
+        // If autoplay fails, play on first user interaction
+        const startOnInteraction = () => {
+            attemptPlay();
+            document.removeEventListener('click', startOnInteraction);
+            document.removeEventListener('keydown', startOnInteraction);
+            document.removeEventListener('touchstart', startOnInteraction);
+            document.removeEventListener('scroll', startOnInteraction);
+        };
+
+        document.addEventListener('click', startOnInteraction);
+        document.addEventListener('keydown', startOnInteraction);
+        document.addEventListener('touchstart', startOnInteraction);
+        document.addEventListener('scroll', startOnInteraction);
+    }
+
     // initialize enhancements
     document.addEventListener('DOMContentLoaded', () => {
         initScrollReveal();
         initHeroParallax();
+        tryPlayBackgroundAudio();
     });
 
 
