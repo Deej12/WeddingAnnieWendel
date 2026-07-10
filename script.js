@@ -149,44 +149,53 @@ form.addEventListener("submit", (e) => {
 
     function tryPlayBackgroundAudio(){
         const audio = document.getElementById('bg-audio');
-        if(!audio) {
-            console.warn('Audio element not found');
-            return;
-        }
+        if(!audio) return;
+        const createFallbackButton = () => {
+            if (document.getElementById('audio-fallback')) return;
+            const btn = document.createElement('button');
+            btn.id = 'audio-fallback';
+            btn.className = 'audio-fallback';
+            btn.type = 'button';
+            btn.textContent = 'Play Music';
 
-        // Ensure audio is set to loop
-        audio.loop = true;
-        audio.volume = 0.5; // Set volume to 50% to be considerate
+            btn.addEventListener('click', () => {
+                if (audio.paused) {
+                    audio.play().catch(() => {});
+                } else {
+                    audio.pause();
+                }
+            });
 
-        const attemptPlay = () => {
-            const playPromise = audio.play();
-            if(playPromise !== undefined) {
-                playPromise
-                    .then(() => {
-                        console.log('Background music is now playing!');
-                    })
-                    .catch(error => {
-                        console.log('Autoplay blocked by browser policy. Music will start on user interaction.', error);
-                    });
-            }
+            audio.addEventListener('play', () => {
+                btn.textContent = 'Pause Music';
+                btn.classList.add('playing');
+            });
+
+            audio.addEventListener('pause', () => {
+                btn.textContent = 'Play Music';
+                btn.classList.remove('playing');
+            });
+
+            document.body.appendChild(btn);
         };
 
-        // Try to play immediately
-        attemptPlay();
+        // Try to play immediately; if blocked show fallback button
+        audio.play().catch(() => {
+            createFallbackButton();
+        });
 
-        // If autoplay fails, play on first user interaction
-        const startOnInteraction = () => {
-            attemptPlay();
-            document.removeEventListener('click', startOnInteraction);
-            document.removeEventListener('keydown', startOnInteraction);
-            document.removeEventListener('touchstart', startOnInteraction);
-            document.removeEventListener('scroll', startOnInteraction);
+        // If autoplay was prevented but user interacts, start playback and hide fallback
+        const resumePlayback = () => {
+            audio.play().catch(() => {});
         };
 
-        document.addEventListener('click', startOnInteraction);
-        document.addEventListener('keydown', startOnInteraction);
-        document.addEventListener('touchstart', startOnInteraction);
-        document.addEventListener('scroll', startOnInteraction);
+        document.addEventListener('click', resumePlayback, { once: true });
+        document.addEventListener('keydown', resumePlayback, { once: true });
+
+        // If still paused after a short delay, show fallback
+        setTimeout(() => {
+            if (audio.paused) createFallbackButton();
+        }, 700);
     }
 
     // initialize enhancements

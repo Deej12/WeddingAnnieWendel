@@ -1105,6 +1105,26 @@ input[type="radio"] {
 }
 
 /* FOOTER */
+
+/* Small fallback play button shown when autoplay is blocked */
+.audio-fallback{
+    position:fixed;
+    left:18px;
+    bottom:18px;
+    background:var(--accent);
+    color:var(--white);
+    border:none;
+    padding:10px 14px;
+    border-radius:999px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.15);
+    cursor:pointer;
+    font-weight:700;
+    z-index:1200;
+}
+.audio-fallback.playing{
+    background:var(--accent-dark);
+}
+
 .footer {
     background:var(--text);
     color:var(--white);
