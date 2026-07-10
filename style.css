@@ -1223,15 +1223,17 @@ input[type="radio"] {
 
 /* Organized Principal Sponsors with Centered Ceremony Party */
 
-/* Center the Ceremony Party above sponsors */
+/* Center the Ceremony Party and Church Readers above sponsors */
 .ceremony-party-compact {
     display:flex;
     justify-content:center;
+    gap:20px;
+    flex-wrap:wrap;
     margin-bottom:24px;
 }
 
 .ceremony-party-compact .sponsor-card {
-    width:100%;
+    flex:1 1 280px;
     max-width:380px;
     padding:14px 16px;
     text-align:center;
@@ -1297,6 +1299,11 @@ input[type="radio"] {
 
 /* Mobile optimization for organized sponsors */
 @media (max-width:768px) {
+    .ceremony-party-compact {
+        flex-direction:column;
+        align-items:center;
+    }
+
     .ceremony-party-compact .sponsor-card { padding:12px 14px; }
     .sponsors-organized .sponsor-columns { gap:12px; }
     .sponsors-organized .sponsor-list li { font-size:0.9rem; }
