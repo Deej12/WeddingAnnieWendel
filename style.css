@@ -1308,3 +1308,34 @@ input[type="radio"] {
     .sponsors-organized .sponsor-columns { gap:12px; }
     .sponsors-organized .sponsor-list li { font-size:0.9rem; }
 }
+
+.dress-code-card {
+    padding: 30px;
+    line-height: 1.8;
+}
+
+.intro-text {
+    margin-bottom: 25px;
+}
+
+.dress-row {
+    margin: 15px 0;   /* Reduced from 30px */
+    padding: 10px 0;  /* Reduced from 20px */
+}
+
+.dress-row h4 {
+    margin-bottom: 8px; /* Slightly closer to the list */
+}
+
+.dress-code-list {
+    margin: 0;
+    padding-left: 20px;
+}
+
+.dress-code-list li {
+    margin-bottom: 8px;
+}
+
+.closing-text {
+    margin-top: 20px;
+}
