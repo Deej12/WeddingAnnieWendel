@@ -1165,19 +1165,12 @@ input[type="radio"] {
 /* MOBILE */
 @media (max-width:768px){
 
-    .hero{
-        min-height:85vh;
-        background-attachment:scroll;
-        background-position:center top;
-        background-size:cover;
-    }
-
     .hero h1{
         font-size:3rem;
     }
 
-    .hero-content{
-        padding:20px 16px 28px;
+    .hero {
+        background-attachment:scroll;
     }
 
     .nav-container {
@@ -1208,58 +1201,24 @@ input[type="radio"] {
         padding:0 16px;
     }
 
-    .info-grid,
-    .sponsors-grid,
-    .schedule-grid,
-    .secondary-sponsors-grid,
-    .guest-grid,
-    .ceremony-grid {
-        grid-template-columns:1fr;
-    }
-
-    .gallery-grid {
-        grid-template-columns:repeat(2, minmax(140px, 1fr));
-        gap:12px;
-    }
-
-    .gallery-item {
-        aspect-ratio:auto;
-        min-height:180px;
-    }
-
-    .gallery-item img {
-        height:100%;
-    }
-
-    .info-card,
-    .guest-card,
-    .sponsor-card,
-    .secondary-sponsor-category,
-    .dress-column {
-        padding:24px 18px;
-    }
-
-    .section-subtitle {
-        font-size:1rem;
-    }
-
-    .event-info-section h2,
-    .countdown-section h2,
-    .rsvp-section h2 {
-        font-size:2rem;
-    }
-
-    .sponsor-list {
-        columns:1;
-    }
-
-    .radio-group {
+    .countdown-container{
         flex-direction:column;
+        align-items:center;
         gap:15px;
     }
 
-    .radio-label {
-        justify-content:flex-start;
+    .time-box {
+        min-width:120px;
+        padding:25px 20px;
+    }
+
+    .time-box span {
+        font-size:2.2rem;
+    }
+
+    .info-grid {
+        grid-template-columns:1fr;
+        gap:20px;
     }
 
     .info-card {
