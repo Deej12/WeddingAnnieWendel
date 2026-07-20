@@ -64,6 +64,25 @@ body{
     letter-spacing:1px;
 }
 
+.nav-toggle {
+    display:none;
+    border:none;
+    background:transparent;
+    cursor:pointer;
+    padding:10px;
+    align-items:center;
+    justify-content:center;
+}
+
+.nav-toggle .bar {
+    display:block;
+    width:22px;
+    height:2px;
+    margin:4px 0;
+    background:var(--text);
+    transition:transform 0.3s ease, opacity 0.3s ease;
+}
+
 .nav-menu {
     display:flex;
     gap:30px;
@@ -1189,14 +1208,37 @@ input[type="radio"] {
         gap:12px;
     }
 
+    .nav-toggle {
+        display:flex;
+    }
+
     .nav-menu {
-        gap:12px;
-        font-size:0.85rem;
-        flex-wrap:wrap;
-        justify-content:center;
+        display:none;
+        flex-direction:column;
+        gap:14px;
+        font-size:0.95rem;
         width:100%;
-        padding:0 0 8px;
+        padding:12px 0 14px;
         border-bottom:1px solid rgba(224,213,204,0.35);
+        background:rgba(255,255,255,0.98);
+    }
+
+    .nav-menu.active {
+        display:flex;
+    }
+
+    .nav-link {
+        padding:10px 0;
+        text-align:center;
+        width:100%;
+    }
+
+    .nav-menu .nav-link {
+        color:var(--text);
+    }
+
+    .nav-toggle {
+        display:flex;
     }
 
     .nav-link {
