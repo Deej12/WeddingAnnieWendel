@@ -1171,6 +1171,16 @@ input[type="radio"] {
 
     .hero {
         background-attachment:scroll;
+        min-height:100vh;
+        height:auto;
+        background-position:center center;
+        background-size:cover;
+        background-repeat:no-repeat;
+        padding-top:0;
+    }
+
+    .hero-content {
+        padding:18px 20px 40px;
     }
 
     .nav-container {
